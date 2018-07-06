@@ -12,9 +12,9 @@ public class RxJavaMapTest {
                 .flatMap(result -> Observable.just(1, 2, 3))
                 .subscribe(result -> System.out.println("Result : " + result));
 
-        // map transforms an event to another and that's it
+        // map transforms a return value of the event
         Observable.fromCallable(() -> 1)
-                .map(result -> 2)
+                .map(result -> 2)//here a value is returned rather than an Observable
                 .subscribe(result -> System.out.println("Result : " + result));
     }
 }
