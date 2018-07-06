@@ -17,12 +17,7 @@ public class RxJavaMergeTest {
 
         IntStream.range(0, 5)
                 .forEach(i -> {
-                    Observable<Integer> observable = Observable.defer(new Callable<ObservableSource<? extends Integer>>() {
-                        @Override
-                        public ObservableSource<? extends Integer> call() throws Exception {
-                            return Observable.just(i);
-                        }
-                    });
+                    Observable<Integer> observable = Observable.defer(() -> Observable.just(i));
                     observables.add(observable);
                 });
 
