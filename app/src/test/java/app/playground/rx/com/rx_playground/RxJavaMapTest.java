@@ -17,4 +17,12 @@ public class RxJavaMapTest {
                 .map(result -> 2)//here a value is returned rather than an Observable
                 .subscribe(result -> System.out.println("Result : " + result));
     }
+
+    @Test
+    public void fetchSeveralEventsAndTryFlatMap() {
+        // flatMap is called 3 times providing 1, 3 and 5 in sequence
+        Observable.just(1, 3, 5)
+                .flatMap(result -> Observable.just(result))
+                .subscribe(result -> System.out.println("Result : " + result));
+    }
 }
